@@ -2,7 +2,9 @@
 #include <string.h>
 #include <windows.h>
 
-#define KEY 0x74
+// constants
+#define KEY 0x74     // keycode to press
+#define DELAY 10000  // delay between keypresses in ms
 
 // take partially built struct and keydown then keyup the key passed
 void keypress(INPUT* inp, int keycode) {
@@ -20,7 +22,7 @@ int main(void) {
 
     inp.ki.wScan = inp.ki.time = inp.ki.dwExtraInfo = 0;  // set a bunch of system flags in the struct to zero
     while(1) {
-        Sleep(10000);  // time between keypresses in ms
+        Sleep(DELAY);  // time between keypresses in ms
 
         keypress(&inp, KEY);
         printf("pressing key 0x%x\n", KEY);
